@@ -1,6 +1,9 @@
 #include <iostream>
+#include "headers/chip_8.hpp"
 
 using namespace std;
+
+Chip8 myChip8;
 
 unsigned short opcode;
 unsigned char memory[4096];
@@ -18,9 +21,13 @@ unsigned short sp;
 unsigned char key[16];
 
 int main() {
-    
+    //set up graphics
+    //set up inputs
+    myChip8.initialize();
+    myChip8.loadGame("pong");
 
-
-    cout << "Hello World!" << endl;
+    for (;;) {
+        myChip8.emulateCycle();
+    }
     return 0;
 }
